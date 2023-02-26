@@ -50,7 +50,23 @@ class Solution:
                 self.swapNext(evenBox)
             cur = evenBox.tail
             curIdx += 1
-
         return ret
+
+    # sol2
+    def oddEvenList2(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return head
+        odd = odd_head = head
+        even = even_head = head.next
+
+        while even and even.next:
+            odd.next = odd.next.next
+            odd = odd.next
+
+            even.next = even.next.next
+            even = even.next
+
+        odd.next = even_head
+        return odd_head
 
 # leetcode submit region end(Prohibit modification and deletion)
